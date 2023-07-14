@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Text Expander
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Text Expander is a React component that allows you to create expandable and collapsible text sections. It's useful for displaying long blocks of text that can be condensed to a specific number of words and expanded when needed.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+To use the Text Expander component in your React project, follow these steps:
 
-### `npm start`
+1. Install the required dependencies by running the following command:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   ```shell
+   npm install react
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Create a new file called `TextExpander.js` and copy the code for the `TextExpander` component into it.
 
-### `npm test`
+3. Import the `TextExpander` component in your React component where you want to use it:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```javascript
+   import TextExpander from "./TextExpander";
+   ```
 
-### `npm run build`
+4. You can now use the `TextExpander` component in your JSX code. Here's an example of how to use it:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```javascript
+   function App() {
+     return (
+       <div>
+         <TextExpander>{/* Your text content goes here */}</TextExpander>
+       </div>
+     );
+   }
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The `TextExpander` component accepts several props that allow you to customize its behavior and appearance. Here are the available props:
 
-### `npm run eject`
+- `children`: The text content to be displayed within the `TextExpander` component.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `collapsedNumWords` (optional): The number of words to display when the text is collapsed. Defaults to 10.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `expandButtonText` (optional): The text to display on the expand button. Defaults to "Show more".
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `collapseButtonText` (optional): The text to display on the collapse button. Defaults to "Show less".
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `buttonColor` (optional): The color of the expand/collapse button. Defaults to "blue".
 
-## Learn More
+- `expanded` (optional): Whether the text should be initially expanded or collapsed. Defaults to `false`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `className` (optional): Additional CSS class name(s) to apply to the `TextExpander` component.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To use these props, pass them to the `TextExpander` component as shown in the example below:
 
-### Code Splitting
+```javascript
+<TextExpander
+  collapsedNumWords={20}
+  expandButtonText="Show text"
+  collapseButtonText="Collapse text"
+  buttonColor="#ff6622"
+>
+  {/* Your text content goes here */}
+</TextExpander>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+When the component is rendered, it will display the text content collapsed to the specified number of words. Clicking the expand button will reveal the full text, and clicking the collapse button will hide the excess text again.
 
-### Analyzing the Bundle Size
+## Example
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Here's an example of how to use the `TextExpander` component:
 
-### Making a Progressive Web App
+```javascript
+import { useState } from "react";
+import "./index.css";
+import TextExpander from "./TextExpander";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+export default function App() {
+  return (
+    <div>
+      <TextExpander>{/* Your text content goes here */}</TextExpander>
 
-### Advanced Configuration
+      <TextExpander
+        collapsedNumWords={20}
+        expandButtonText="Show text"
+        collapseButtonText="Collapse text"
+        buttonColor="#ff6622"
+      >
+        {/* Your text content goes here */}
+      </TextExpander>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+      <TextExpander expanded={true} className="box">
+        {/* Your text content goes here */}
+      </TextExpander>
+    </div>
+  );
+}
+```
 
-### Deployment
+In this example, three `TextExpander` components are used to display different blocks of text with different configurations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Feel free to customize the component's props and the text content to fit your specific needs.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+That's it! You can now use the `TextExpander` component in your React project to create expandable and collapsible text sections.
